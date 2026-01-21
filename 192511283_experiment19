@@ -1,0 +1,44 @@
+#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main()
+{
+int a[20],b[30],i,j,k,count,n;
+printf(&quot;Enter frame size (Example: 8):&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+printf(&quot;Enter the frame in the form of 0 and 1 :&quot;);
+for(i=0; i&lt;n; i++)
+scanf(&quot;%d&quot;,&amp;a[i]);
+i=0;
+count=1;
+j=0;
+while(i&lt;n)
+{
+if(a[i]==1)
+{
+b[j]=a[i];
+for(k=i+1; a[k]==1 &amp;&amp; k&lt;n &amp;&amp; count&lt;5; k++)
+{
+j++;
+b[j]=a[k];
+count++;
+if(count==5)
+{
+j++;
+b[j]=0;
+}
+
+i=k;
+}
+}
+else
+{
+b[j]=a[i];
+}
+i++;
+j++;
+}
+printf(&quot;After Bit Stuffing :&quot;);
+for(i=0; i&lt;j; i++)
+printf(&quot;%d&quot;,b[i]);
+return 0;
+}
